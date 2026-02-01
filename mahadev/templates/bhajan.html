@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ bhajan[1] }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bhajan-bg">
+
+<!-- 🌸 Flowers -->
+<div class="flower-container"></div>
+
+<!-- ☰ Menu -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <h2>🕉 Mahadev</h2>
+    <a href="/" onclick="closeMenu()">🏠 Home</a>
+    <a href="/bhajans" onclick="closeMenu()">📖 Bhajan</a>
+    
+</div>
+
+<!-- Content -->
+<div class="bhajan-container">
+    <h1>{{ bhajan[1] }}</h1>
+
+    {% if bhajan[5] %}
+        <img src="/static/uploads/{{ bhajan[5] }}" style="max-width:100%;border-radius:12px;">
+    {% endif %}
+
+    {% if bhajan[2] %}
+        <div class="bhajan-text">{{ bhajan[2]|replace('\n','<br>')|safe }}</div>
+    {% endif %}
+
+    {% if views is not none %}
+        <p class="views">👁 Views: {{ views }}</p>
+    {% endif %}
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Sidebar auto close on page load */
+window.addEventListener("pageshow", function () {
+    document.getElementById("sidebar").classList.remove("active");
+});
+
+
+/* 🌸 Falling flowers */
+const flowerContainer = document.querySelector('.flower-container');
+setInterval(() => {
+    const f = document.createElement('div');
+    f.className = 'flower';
+    f.innerHTML = "🌸";
+    f.style.left = Math.random() * window.innerWidth + "px";
+    f.style.animationDuration = (3 + Math.random() * 5) + "s";
+    flowerContainer.appendChild(f);
+    setTimeout(() => f.remove(), 8000);
+}, 500);
+</script>
+
+</body>
+</html>

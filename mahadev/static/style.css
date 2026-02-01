@@ -1,0 +1,241 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* HAMBURGER MENU BUTTON (ALWAYS VISIBLE) */
+.menu-btn {
+    font-size: 26px;
+    padding: 12px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 1001;
+    border-radius: 6px;
+}
+
+/* SIDEBAR (HIDDEN BY DEFAULT ON ALL DEVICES) */
+.sidebar {
+    width: 240px;
+    background: rgba(0,0,0,0.95);
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    left: -260px;
+    top: 0;
+    transition: 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar h2 {
+    color: #fca311;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    color: #fca311;
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* CONTENT ALWAYS FULL WIDTH */
+.main, .bhajan-container, .home-content {
+    margin-left: 0;
+}
+
+/* HOME BACKGROUND DESKTOP */
+.home-bg {
+    min-height: 100vh;
+    background: url("/static/mahadev_desktop.jpg") no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+/* MOBILE BACKGROUND */
+@media (max-width: 768px) {
+    .home-bg {
+        background: url("/static/mahadev_mobile.jpg") no-repeat center center;
+        background-size: cover;
+    }
+}
+
+/* DARK OVERLAY */
+.overlay {
+    background: rgba(0,0,0,0.6);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* HOME TEXT */
+.home-content h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.home-content p {
+    font-size: 18px;
+}
+
+/* DARK PAGES */
+.dark-bg {
+    background: linear-gradient(to bottom, #0d1b2a, #1b263b);
+    min-height: 100vh;
+}
+
+/* MAIN CONTENT */
+.main {
+    padding: 30px;
+}
+
+/* CARD STYLE */
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+}
+
+/* BHAJAN PAGE */
+.bhajan-bg {
+    background: linear-gradient(to bottom, #0d1b2a, #1b263b);
+    min-height: 100vh;
+}
+
+.bhajan-container {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.bhajan-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.bhajan-text {
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 12px;
+    line-height: 1.9;
+    font-size: 18px;
+    white-space: pre-line;
+}
+
+.views {
+    margin-top: 15px;
+    color: #fca311;
+    text-align: right;
+}
+
+/* LOGIN BOX */
+.login-box {
+    max-width: 350px;
+    margin: 120px auto;
+    background: rgba(255,255,255,0.08);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.login-box input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+}
+
+.login-box button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    background: #fca311;
+    color: black;
+    cursor: pointer;
+}
+
+/* 🌸 FALLING FLOWERS */
+.flower-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.flower {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.8;
+    }
+}
+
+/* 🕉 GLOWING OM */
+.om-glow {
+    font-size: 90px;
+    color: #fca311;
+    text-shadow: 0 0 10px #fca311, 0 0 20px #ffba08, 0 0 40px #faa307;
+    animation: glowPulse 2s infinite alternate;
+    margin-bottom: 10px;
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow: 0 0 10px #fca311, 0 0 20px #ffba08;
+    }
+    to {
+        text-shadow: 0 0 20px #ffba08, 0 0 40px #faa307, 0 0 60px #ffba08;
+    }
+}
+
+/* MOBILE TEXT ADJUSTMENTS */
+@media (max-width: 768px) {
+    .home-content h1 { font-size: 28px; }
+    .home-content p { font-size: 16px; }
+    .bhajan-text { font-size: 16px; padding: 18px; }
+}
+/* 🔙 Back Button */
+.back-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.7);
+    color: #fca311;
+    border: none;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.back-btn:hover {
+    background: rgba(0,0,0,0.9);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Bhajan</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body class="dark-bg">
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+
+<div class="sidebar active" id="sidebar">
+    <h2>🕉 Admin</h2>
+    <a href="/admin">⬅ Back</a>
+    <a href="/logout">🚪 Logout</a>
+</div>
+
+<div class="main">
+    <h2>Edit Bhajan</h2>
+    <form method="POST" enctype="multipart/form-data">
+    <input type="text" name="title" value="{{bhajan[1]}}" required><br><br>
+    <textarea name="content" rows="6">{{bhajan[2]}}</textarea><br><br>
+    <input type="file" name="image" accept="image/*"><br><br>
+    <button type="submit">Update Bhajan</button>
+</form>
+
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Sidebar auto close on page load */
+window.addEventListener("pageshow", function () {
+    document.getElementById("sidebar").classList.remove("active");
+});
+</script>
+
+</body>
+</html>

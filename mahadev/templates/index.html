@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🕉 Mahadev Darshan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="home-bg">
+
+<div class="flower-container"></div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+
+<div class="sidebar" id="sidebar">
+    <h2>🕉 Mahadev</h2>
+    <a href="/">🏠 Home</a>
+    <a href="/bhajans">📖 Bhajan</a>
+    <a href="/login">🔐 Admin</a>
+</div>
+
+<div class="overlay">
+    <div class="home-content">
+        <div class="om-glow">🕉</div>
+        <h1>श्री नर्मदेश्वर महादेव मंदिर🙏</h1>
+        <p>दिव्या भक्ति और शिव भजनों का पवित्र स्थल </p>
+    </div>
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Sidebar auto close on page load */
+window.addEventListener("pageshow", function () {
+    document.getElementById("sidebar").classList.remove("active");
+});
+const flowerContainer = document.querySelector('.flower-container');
+function createFlower() {
+    const flower = document.createElement('div');
+    flower.classList.add('flower');
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * window.innerWidth + "px";
+    flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+    flowerContainer.appendChild(flower);
+    setTimeout(() => flower.remove(), 8000);
+}
+setInterval(createFlower, 500);
+</script>
+
+</body>
+</html>

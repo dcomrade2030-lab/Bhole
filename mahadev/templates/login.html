@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body class="dark-bg">
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+
+<div class="sidebar" id="sidebar">
+    <h2>🕉</h2>
+    <a href="/">🏠 Home</a>
+    <a href="/bhajans">📖 Bhajan</a>
+</div>
+
+<div class="login-box">
+    <h2>🔐 Admin Login</h2>
+    <form method="POST">
+        <input type="text" name="username" placeholder="Username" required><br><br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Sidebar auto close on page load */
+window.addEventListener("pageshow", function () {
+    document.getElementById("sidebar").classList.remove("active");
+});
+</script>
+
+</body>
+</html>

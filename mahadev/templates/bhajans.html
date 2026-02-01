@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bhajan List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="dark-bg">
+
+<div class="flower-container"></div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+
+<div class="sidebar" id="sidebar">
+    <h2>🕉 Mahadev</h2>
+    <a href="/">🏠 Home</a>
+    <a href="/bhajans">📖 Bhajan</a>
+    <a href="/login">🔐 Admin</a>
+</div>
+
+<div class="main">
+    <h1>📜 Bhajan List</h1>
+
+    <form method="GET" action="/bhajans" style="margin-bottom:20px;">
+        <input type="text" name="search" placeholder="🔍 Search bhajan..." value="{{ search_query }}">
+        <button type="submit">Search</button>
+    </form>
+
+    {% for b in bhajans %}
+        <div class="card">
+            <a href="/bhajan/{{b[0]}}">{{b[1]}}</a>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+/* Sidebar auto close on page load */
+window.addEventListener("pageshow", function () {
+    document.getElementById("sidebar").classList.remove("active");
+});
+const flowerContainer = document.querySelector('.flower-container');
+setInterval(()=>{
+    const f=document.createElement('div');
+    f.className='flower';
+    f.innerHTML="🌸";
+    f.style.left=Math.random()*window.innerWidth+"px";
+    f.style.animationDuration=(3+Math.random()*5)+"s";
+    flowerContainer.appendChild(f);
+    setTimeout(()=>f.remove(),8000);
+},500);
+</script>
+
+</body>
+</html>

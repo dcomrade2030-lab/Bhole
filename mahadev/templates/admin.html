@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="dark-bg">
+
+<div class="flower-container"></div>
+
+<!-- ☰ Menu -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <h2>🕉 Admin Panel</h2>
+    <a href="/" onclick="closeMenu()">🏠 Home</a>
+    <a href="/change_password" onclick="closeMenu()">🔑 Change Password</a>
+    <a href="/logout" onclick="closeMenu()">🚪 Logout</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+    <h1>📿 Add New Bhajan</h1>
+
+    <form method="POST" enctype="multipart/form-data" class="card">
+        <input type="text" name="title" placeholder="Bhajan Title" required style="width:100%; padding:10px;"><br><br>
+
+        <textarea name="content" rows="6" placeholder="Bhajan Lyrics (optional)" style="width:100%; padding:10px;"></textarea><br><br>
+
+        <input type="file" name="image" accept="image/*"><br><br>
+
+        <button type="submit">➕ Add Bhajan</button>
+    </form>
+
+    <h2 style="margin-top:40px;">📖 All Bhajans</h2>
+
+    {% for b in bhajans %}
+        <div class="card">
+            <strong>{{ b[1] }}</strong><br>
+            👁 {{ b[4] }} views<br>
+        </div>
+    {% endfor %}
+
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("active");
+}
+function closeMenu(){
+    document.getElementById("sidebar").classList.remove("active");
+}
+function goBack(){
+    if(document.referrer !== ""){
+        window.history.back();
+    } else {
+        window.location.href = "/";
+    }
+}
+
+/* Sidebar reset on page load */
+window.addEventListener("pageshow", function () {
+    document.getElementById("sidebar").classList.remove("active");
+});
+
+/* 🌸 Falling flowers */
+const flowerContainer = document.querySelector('.flower-container');
+setInterval(() => {
+    const f = document.createElement('div');
+    f.className = 'flower';
+    f.innerHTML = "🌸";
+    f.style.left = Math.random() * window.innerWidth + "px";
+    f.style.animationDuration = (3 + Math.random() * 5) + "s";
+    flowerContainer.appendChild(f);
+    setTimeout(() => f.remove(), 8000);
+}, 500);
+</script>
+
+</body>
+</html>
